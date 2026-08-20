@@ -1,0 +1,30 @@
+# ---- Python (backend) ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Trained model files - too large for git, handle separately (see README)
+backend/models/*.h5
+backend/models/*.keras
+backend/models/*.pt
+backend/models/*.onnx
+
+# Generated result images (runtime output, not source)
+backend/results/*.jpg
+backend/results/*.png
+!backend/results/.gitkeep
+
+# ---- Node / React (frontend) ----
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+# ---- OS / Editor ----
+.DS_Store
+.vscode/
+.idea/
+*.log

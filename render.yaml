@@ -1,0 +1,15 @@
+# Render Blueprint - lets you deploy the backend with one click
+# via Render's "New Blueprint Instance" using this repo.
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: malaria-screening-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
