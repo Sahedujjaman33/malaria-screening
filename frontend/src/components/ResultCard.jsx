@@ -18,7 +18,8 @@ export default function ResultCard({ result, onReset }) {
       <h2 className={isParasitized ? "verdict-positive" : "verdict-negative"}>
         {isParasitized ? "Parasitized RBC Detected" : "No Parasites Detected"}
       </h2>
-
+      <h2 className={isParasitized ? "verdict-positive" : "verdict-negative"} > {isParasitized ? `Parasitized RBC Detected (${result.parasitized_percentage}% of ${result.total_cells} cells)`: "No Parasites Detected"}
+      </h2>
       <div className="stats-grid">
         <div className="stat">
           <span className="stat-value">{total_cells}</span>
