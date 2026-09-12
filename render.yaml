@@ -1,7 +1,4 @@
-# Render Blueprint - lets you deploy the backend with one click
-# via Render's "New Blueprint Instance" using this repo.
-# https://render.com/docs/blueprint-spec
-
+# render.yaml
 services:
   - type: web
     name: malaria-screening-backend
