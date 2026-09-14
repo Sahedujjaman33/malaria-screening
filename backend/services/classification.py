@@ -63,5 +63,3 @@ def predict_rbc(cell_image: np.ndarray) -> dict:
         "uninfected_probability": round(p_uninfected, 4),
     }
 
-
-_load_model()

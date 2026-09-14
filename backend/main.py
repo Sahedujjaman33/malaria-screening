@@ -13,6 +13,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from routes import prediction
+from services.classification import _load_model
 
 app = FastAPI(
     title="Malaria Screening System API",
@@ -22,8 +23,6 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS: allow frontend (React dev server / GitHub Pages / Vercel) to call this API.
-# Replace "*" with your actual deployed frontend URL before going to production.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -32,10 +31,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve annotated result images statically at /results/<filename>
 app.mount("/results", StaticFiles(directory="results"), name="results")
 
 app.include_router(prediction.router)
+
+
+@app.on_event("startup")
+async def startup_event():
+    """
+    Server আগে port-এ bind হয়ে health check pass করে ফেলবে,
+    তারপর background-এ model download/load শুরু হবে।
+    এটাই Cloud Run-এর "container failed to start" সমস্যার সমাধান।
+    """
+    _load_model()
 
 
 @app.get("/")
