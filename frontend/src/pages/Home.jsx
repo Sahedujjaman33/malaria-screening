@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>AI-Based Malaria Screening</h1>
+        <h1>Malaria Parasite Screening</h1>
         <p>Upload a thin blood-smear image for automated RBC analysis</p>
       </header>
 
